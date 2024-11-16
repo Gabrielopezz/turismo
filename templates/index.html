@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Turísticas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Actividades Turísticas</h1>
+    </header>
+    <main>
+        <ul>
+            {% for actividad in actividades %}
+            <li>
+                <a href="/actividad/{{ actividad.id }}">{{ actividad.nombre }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

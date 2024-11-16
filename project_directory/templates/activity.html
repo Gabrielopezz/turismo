@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ activity.name }} - Actividades Turísticas{% endblock %}
+
+{% block content %}
+    <h1>{{ activity.name }}</h1>
+    <p>{{ activity.description }}</p>
+    <p>Ubicación: {{ activity.location }}</p>
+    {% if current_user.is_authenticated %}
+        <form action="{{ url_for('toggle_favorite', activity_id=activity.id) }}" method="post">
+            <button type="submit" class="btn {% if is_favorite %}btn-unfavorite{% else %}btn-favorite{% endif %}">
+                {% if is_favorite %}
+                    Quitar de favoritos
+                {% else %}
+                    Agregar a favoritos
+                {% endif %}
+            </button>
+        </form>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="btn">Volver a la lista de actividades</a>
+{% endblock %}

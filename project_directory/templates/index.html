@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Actividades Turísticas de Ensenada </h1>
+    <ul class="activities-list">
+        {% for activity in activities %}
+        <li>
+            <h2><a href="{{ url_for('activity', id=activity.id) }}">{{ activity.name }}</a></h2>
+            <p>{{ activity.description[:100] }}...</p>
+            <p>Ubicación: {{ activity.location }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
